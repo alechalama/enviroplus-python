@@ -13,13 +13,13 @@ from enviroplus import gas
 import logging
 import sys
 from subprocess import PIPE, Popen
-from enviroplus.noise import Noise
+# from enviroplus.noise import Noise
 # ------------------------------------------------------------------ #
 
 # Constructing Sensor Objects for Fetching
 bme280 = BME280()  # BME280 temperature/pressure/humidity sensor
 pms5003 = PMS5003()  # PMS5003 particulate sensor
-noise = Noise()
+# noise = Noise()
 
 
 """ Method for fetching all sensor data 
@@ -29,8 +29,9 @@ def get_readings():
     readings = {'pressure': get_pressure(),
                 'humidity': get_humidity(),
                 'temperature': get_temperature(),
-                'light': get_light(),
-                'noise': get_noise()}
+                'light': get_light()  # ,
+                # 'noise': get_noise()
+    }
     return readings
 
 
@@ -53,9 +54,10 @@ def get_light():
 """ Method for fetching the noise returns 
     the amplitude of the noise detected """
 def get_noise():
-    low, mid, high, amp = noise.get_noise_profile()
-    amp *= 64
-    return amp
+    pass
+    # low, mid, high, amp = noise.get_noise_profile()
+    # amp *= 64
+    # return amp
 
 
 """ Method for fetching the ambient temperature
